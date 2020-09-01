@@ -84,14 +84,14 @@ public class BitBoard {
     }
 
     private static long[] generateKnightLookupTable() {
-        int ROWS = 8, COLS = 8;
-        final long[] knightLookup = new long[ROWS * COLS];
+        int rows = 8, columns = 8;
+        final long[] knightLookupTable = new long[rows * columns];
 
         int[][] moves = new int[][]{{2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}, {2, -1}};
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                int oppositeRow = ROWS - i - 1;
-                int index = oppositeRow * ROWS + j;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                int oppositeRow = rows - i - 1;
+                int index = oppositeRow * rows + j;
 //                System.out.print("knightLookup[" + index + "] = ");
 
                 long validMoves = 0L;
@@ -99,17 +99,17 @@ public class BitBoard {
                     int[] move = moves[k];
                     int newRow = oppositeRow + move[0];
                     int newColumn = j + move[1];
-                    if (newRow >= 0 && newRow < ROWS && newColumn >= 0 && newColumn < COLS) {
-                        int idx = newRow * ROWS + newColumn;
-                        System.out.print("1L << " + idx + ((k == moves.length - 1) ? "L" : "L | "));
-                        validMoves |= idx;
+                    if (newRow >= 0 && newRow < rows && newColumn >= 0 && newColumn < columns) {
+                        int shiftBy = newRow * rows + newColumn;
+//                        System.out.print("1L << " + idx + ((k == moves.length - 1) ? "L" : "L | "));
+                        validMoves |= shiftBy;
                     }
                 }
 
 //                System.out.println();
-                knightLookup[index] = validMoves;
+                knightLookupTable[index] = validMoves;
             }
         }
-        return knightLookup;
+        return knightLookupTable;
     }
 }
