@@ -3,9 +3,9 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        ChessEngine engine = new ChessEngine();
+        Interface moveInterface = new Interface();
         IO.open();
-        engine.run();
+        moveInterface.run();
         IO.close();
         System.exit(0);
     }
