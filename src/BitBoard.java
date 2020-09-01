@@ -17,6 +17,8 @@ public class BitBoard {
     private static final long INITIAL_WHITE_QUEEN = 0x8L;
     private static final long INITIAL_WHITE_KING = 0x10L;
 
+    private static final long[] KNIGHT_LOOKUP = generateKnightLookupTable();
+
     private final long black_pieces;
     private final long white_pieces;
 
@@ -79,5 +81,35 @@ public class BitBoard {
         this.whiteRooks = whiteRooks;
         this.whiteQueen = whiteQueen;
         this.whiteKing = whiteKing;
+    }
+
+    private static long[] generateKnightLookupTable() {
+        int ROWS = 8, COLS = 8;
+        final long[] knightLookup = new long[ROWS * COLS];
+
+        int[][] moves = new int[][]{{2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}, {2, -1}};
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                int oppositeRow = ROWS - i - 1;
+                int index = oppositeRow * ROWS + j;
+//                System.out.print("knightLookup[" + index + "] = ");
+
+                long validMoves = 0L;
+                for (int k = 0; k < moves.length; k++) {
+                    int[] move = moves[k];
+                    int newRow = oppositeRow + move[0];
+                    int newColumn = j + move[1];
+                    if (newRow >= 0 && newRow < ROWS && newColumn >= 0 && newColumn < COLS) {
+                        int idx = newRow * ROWS + newColumn;
+                        System.out.print("1L << " + idx + ((k == moves.length - 1) ? "L" : "L | "));
+                        validMoves |= idx;
+                    }
+                }
+
+//                System.out.println();
+                knightLookup[index] = validMoves;
+            }
+        }
+        return knightLookup;
     }
 }
