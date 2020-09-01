@@ -17,8 +17,6 @@ public class BitBoard {
     private static final long INITIAL_WHITE_QUEEN = 0x8L;
     private static final long INITIAL_WHITE_KING = 0x10L;
 
-    private static final long[] KNIGHT_LOOKUP = generateKnightLookupTable();
-
     private final long black_pieces;
     private final long white_pieces;
 
@@ -35,6 +33,9 @@ public class BitBoard {
     private final long whiteRooks;
     private final long whiteQueen;
     private final long whiteKing;
+
+    private static final long[] KNIGHT_LOOKUP = generateKnightLookupTable();
+    private final MoveGenerator generator = new MoveGenerator();
 
     public BitBoard() {
         this.black_pieces = INITIAL_BLACK_PIECES;
