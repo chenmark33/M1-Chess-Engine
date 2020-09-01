@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class IO {
+public class InputReader {
     static BufferedReader reader;
     static StringTokenizer tokenizer;
     static BufferedWriter writer;
@@ -71,7 +71,7 @@ public class IO {
         String str = null;
         String[] vals;
 
-        str = IO.reader.readLine();
+        str = InputReader.reader.readLine();
         if (str == null || str.length() == 0) return list;
         vals = str.split(" ");
 
