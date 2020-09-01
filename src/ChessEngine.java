@@ -14,6 +14,7 @@ public class ChessEngine {
 
     public boolean processInput() throws IOException {
         List<String> userInput = IO.readStringsToArrayListSingleLine();
+        if (userInput.isEmpty()) return false;
         String commandType = userInput.get(0);
         if (commandType.equals("quit")) {
             System.out.println("Quitting Engine");

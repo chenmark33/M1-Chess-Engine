@@ -1,18 +1,24 @@
 public class BitBoard {
 
-    private static final long INITIAL_BLACK_PAWNS = 0x00FF000000000000L;
+    private static final long INITIAL_BLACK_PIECES = 0xFFFF000000000000L;
+    private static final long INITIAL_WHITE_PIECES = 0xFFFFL;
+
+    private static final long INITIAL_BLACK_PAWNS = 0xFF000000000000L;
     private static final long INITIAL_BLACK_KNIGHTS = 0x4200000000000000L;
     private static final long INITIAL_BLACK_BISHOPS = 0x2400000000000000L;
     private static final long INITIAL_BLACK_ROOKS = 0x8100000000000000L;
-    private static final long INITIAL_BLACK_QUEEN = 0x1000000000000000L;
-    private static final long INITIAL_BLACK_KING = 0x0800000000000000L;
+    private static final long INITIAL_BLACK_QUEEN = 0x800000000000000L;
+    private static final long INITIAL_BLACK_KING = 0x1000000000000000L;
 
-    private static final long INITIAL_WHITE_PAWNS = 0x000000000000FF00L;
-    private static final long INITIAL_WHITE_KNIGHTS = 0x0000000000000042L;
-    private static final long INITIAL_WHITE_BISHOPS = 0x0000000000000024L;
-    private static final long INITIAL_WHITE_ROOKS = 0x0000000000000081L;
-    private static final long INITIAL_WHITE_QUEEN = 0x0000000000000010L;
-    private static final long INITIAL_WHITE_KING = 0x0000000000000008L;
+    private static final long INITIAL_WHITE_PAWNS = 0xFF00L;
+    private static final long INITIAL_WHITE_KNIGHTS = 0x42L;
+    private static final long INITIAL_WHITE_BISHOPS = 0x24L;
+    private static final long INITIAL_WHITE_ROOKS = 0x81L;
+    private static final long INITIAL_WHITE_QUEEN = 0x8L;
+    private static final long INITIAL_WHITE_KING = 0x10L;
+
+    private final long BLACK_PIECES;
+    private final long WHITE_PIECES;
 
     private final long blackPawns;
     private final long blackKnights;
@@ -29,6 +35,9 @@ public class BitBoard {
     private final long whiteKing;
 
     public BitBoard() {
+        this.BLACK_PIECES = INITIAL_BLACK_PIECES;
+        this.WHITE_PIECES = INITIAL_WHITE_PIECES;
+
         this.blackPawns = INITIAL_BLACK_PAWNS;
         this.blackKnights = INITIAL_BLACK_KNIGHTS;
         this.blackBishops = INITIAL_BLACK_BISHOPS;
@@ -56,6 +65,8 @@ public class BitBoard {
                     long whiteRooks,
                     long whiteQueen,
                     long whiteKing) {
+        this.BLACK_PIECES = blackPawns | blackKnights | blackBishops | blackRooks | blackQueen | blackKing;
+        this.WHITE_PIECES = whitePawns | whiteKnights | whiteBishops | whiteRooks | whiteQueen | whiteKing;
         this.blackPawns = blackPawns;
         this.blackKnights = blackKnights;
         this.blackBishops = blackBishops;
@@ -70,5 +81,7 @@ public class BitBoard {
         this.whiteKing = whiteKing;
     }
 
+    public void promptResetBoard() {
 
+    }
 }
