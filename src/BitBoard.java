@@ -122,7 +122,7 @@ public class BitBoard {
                     int newColumn = j + move[1];
                     if (newRow >= 0 && newRow < rows && newColumn >= 0 && newColumn < columns) {
                         int shiftBy = newRow * rows + newColumn;
-//                        System.out.print("1L << " + idx + ((k == moves.length - 1) ? "L" : "L | "));
+//                        System.out.print("1L << " + shiftBy + ((k == moves.length - 1) ? "L" : "L | "));
                         validMoves |= shiftBy;
                     }
                 }
