@@ -1,8 +1,14 @@
 public class BitBoard {
 
+    /**
+     * Initial Black and White Pieces
+     */
     private static final long INITIAL_BLACK_PIECES = 0xFFFF000000000000L;
     private static final long INITIAL_WHITE_PIECES = 0xFFFFL;
 
+    /**
+    * Initial Black Pieces
+    */
     private static final long INITIAL_BLACK_PAWNS = 0xFF000000000000L;
     private static final long INITIAL_BLACK_KNIGHTS = 0x4200000000000000L;
     private static final long INITIAL_BLACK_BISHOPS = 0x2400000000000000L;
@@ -10,6 +16,9 @@ public class BitBoard {
     private static final long INITIAL_BLACK_QUEEN = 0x800000000000000L;
     private static final long INITIAL_BLACK_KING = 0x1000000000000000L;
 
+    /**
+     * Initial White Pieces
+     */
     private static final long INITIAL_WHITE_PAWNS = 0xFF00L;
     private static final long INITIAL_WHITE_KNIGHTS = 0x42L;
     private static final long INITIAL_WHITE_BISHOPS = 0x24L;
@@ -17,9 +26,15 @@ public class BitBoard {
     private static final long INITIAL_WHITE_QUEEN = 0x8L;
     private static final long INITIAL_WHITE_KING = 0x10L;
 
+    /**
+     * Dynamic Black and White Pieces
+     */
     private final long black_pieces;
     private final long white_pieces;
 
+    /**
+     * Dynamic Black Pieces
+     */
     private final long blackPawns;
     private final long blackKnights;
     private final long blackBishops;
@@ -27,6 +42,9 @@ public class BitBoard {
     private final long blackQueen;
     private final long blackKing;
 
+    /**
+     * Dynamic White Pieces
+     */
     private final long whitePawns;
     private final long whiteKnights;
     private final long whiteBishops;
@@ -34,8 +52,10 @@ public class BitBoard {
     private final long whiteQueen;
     private final long whiteKing;
 
+    /**
+     * Knight Moves Lookup Table
+     */
     private static final long[] KNIGHT_LOOKUP = generateKnightLookupTable();
-    private final MoveGenerator generator = new MoveGenerator();
 
     public BitBoard() {
         this.black_pieces = INITIAL_BLACK_PIECES;

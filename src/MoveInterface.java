@@ -38,18 +38,14 @@ public class MoveInterface extends Thread {
         List<String> userInput = InputReader.readStringsToArrayListSingleLine();
         if (userInput.isEmpty()) return false;
         String commandType = userInput.get(0);
-
-        if (commandType.equals("quit")) {
-            System.out.println("Quitting Engine...");
-            return false;
-        }
-        else if (commandType.equals("uci")) {
+        if (commandType.equals("uci")) {
             sendUCIResponse(userInput);
             return true;
         }
         else if (commandType.equals("restart")) {
             return promptResetBoard();
         }
+        System.out.println("Quitting Engine...");
         return false;
     }
 
