@@ -29,28 +29,28 @@ public class BitBoard {
     /**
      * Dynamic Black and White Pieces
      */
-    private final long black_pieces;
-    private final long white_pieces;
+    private long black_pieces;
+    private long white_pieces;
 
     /**
      * Dynamic Black Pieces
      */
-    private final long blackPawns;
-    private final long blackKnights;
-    private final long blackBishops;
-    private final long blackRooks;
-    private final long blackQueen;
-    private final long blackKing;
+    private long blackPawns;
+    private long blackKnights;
+    private long blackBishops;
+    private long blackRooks;
+    private long blackQueen;
+    private long blackKing;
 
     /**
      * Dynamic White Pieces
      */
-    private final long whitePawns;
-    private final long whiteKnights;
-    private final long whiteBishops;
-    private final long whiteRooks;
-    private final long whiteQueen;
-    private final long whiteKing;
+    private long whitePawns;
+    private long whiteKnights;
+    private long whiteBishops;
+    private long whiteRooks;
+    private long whiteQueen;
+    private long whiteKing;
 
     /**
      * Knight Moves Lookup Table
