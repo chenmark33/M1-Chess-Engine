@@ -5,6 +5,9 @@ public class Engine {
     MoveGenerator generator;
     Evaluator evaluator;
 
+    /**
+     * Constructor for the Engine class
+     */
     public Engine() {
         this.console = new MoveInterface();
         this.board = new BitBoard();
@@ -12,11 +15,17 @@ public class Engine {
         this.evaluator = new Evaluator();
     }
 
+    /**
+     * Calls {@link MoveInterface#start()} on {@link Engine#console}
+     */
     public void run() {
         console.start();
         startGame();
     }
 
+    /**
+     * Starts the game
+     */
     public void startGame() {
         System.out.println("Game starting");
     }

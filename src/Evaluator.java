@@ -7,10 +7,8 @@ public class Evaluator {
     private int whiteScore;
 
     /**
-     * TO DO:
-     * Add material/score calculation formulas
-     * */
-
+     * Constructor for the Evaluator class
+     */
     public Evaluator() {
         this.blackScore = 0;
         this.whiteScore = 0;

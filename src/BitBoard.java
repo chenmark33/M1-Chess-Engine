@@ -57,6 +57,9 @@ public class BitBoard {
      */
     private static final long[] KNIGHT_LOOKUP = generateKnightLookupTable();
 
+    /**
+     * Constructor for the BitBoard class
+     */
     public BitBoard() {
         this.black_pieces = INITIAL_BLACK_PIECES;
         this.white_pieces = INITIAL_WHITE_PIECES;
@@ -76,6 +79,22 @@ public class BitBoard {
         this.whiteKing = INITIAL_WHITE_KING;
     }
 
+    /**
+     * Overloaded constructor for the BitBoard class
+     *
+     * @param blackPawns
+     * @param blackKnights
+     * @param blackBishops
+     * @param blackRooks
+     * @param blackQueen
+     * @param blackKing
+     * @param whitePawns
+     * @param whiteKnights
+     * @param whiteBishops
+     * @param whiteRooks
+     * @param whiteQueen
+     * @param whiteKing
+     */
     public BitBoard(long blackPawns,
                     long blackKnights,
                     long blackBishops,
@@ -104,6 +123,12 @@ public class BitBoard {
         this.whiteKing = whiteKing;
     }
 
+    /**
+     * Generates all valid moves for any knight in all 64 possible squares on a standard chessboard.
+     *
+     * @return A list of long numbers, denoting for each index a list of valid knight moves starting from that
+     * corresponding index, each one being represented as a 64-bit long binary string.
+     */
     private static long[] generateKnightLookupTable() {
         int rows = 8, columns = 8;
         final long[] knightLookupTable = new long[rows * columns];
