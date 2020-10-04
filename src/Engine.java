@@ -1,7 +1,7 @@
 public class Engine {
 
     MoveInterface console;
-    BitBoard board;
+//    BitBoard board;
     MoveGenerator generator;
     Evaluator evaluator;
 
@@ -10,7 +10,7 @@ public class Engine {
      */
     public Engine() {
         this.console = new MoveInterface();
-        this.board = new BitBoard();
+//        this.board = new BitBoard();
         this.generator = new MoveGenerator();
         this.evaluator = new Evaluator();
     }

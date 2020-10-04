@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.*;
 
 public class MoveInterface extends Thread {
+
     private volatile boolean alive = true;
+    BitBoard board;
 
     /**
      * This method is the main interface from which the user enters commands to the engine
@@ -11,6 +13,7 @@ public class MoveInterface extends Thread {
      */
     @Override
     public void run() {
+        this.board = new BitBoard();
         InputReader.open();
         while (alive) {
             System.out.println("Available Commands: ");
@@ -54,7 +57,7 @@ public class MoveInterface extends Thread {
         if (userInput.isEmpty()) return false;
         String commandType = userInput.get(0);
         if (commandType.equals("uci")) {
-            sendUCIResponse(userInput);
+            parseFEN(userInput);
             return true;
         }
         else if (commandType.equals("restart")) {
@@ -69,8 +72,14 @@ public class MoveInterface extends Thread {
      *
      * @param userInput The user's input, split by spaces.
      */
-    public void sendUCIResponse(List<String> userInput) {
-        System.out.println("Sending response... \n");
+    public void parseFEN(List<String> userInput) {
+        System.out.println("Parsing response... \n");
+        String[] piecePlacements = userInput.get(1).split("/");
+        String activeColor = userInput.get(2);
+        String castling = userInput.get(3);
+        String enPassantt = userInput.get(4);
+        int halfMoveClock = Integer.parseInt(userInput.get(5));
+        int fullMoveNumber = Integer.parseInt(userInput.get(6));
     }
 
     /**
